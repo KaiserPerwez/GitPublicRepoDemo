@@ -1,7 +1,8 @@
-package com.kaiser.gitpublicrepodemo
+package com.kaiser.gitpublicrepodemo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.kaiser.gitpublicrepodemo.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
