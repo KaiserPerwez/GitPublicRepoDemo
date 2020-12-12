@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GitPublicRepoDemo</string>
+    <string name="search">Type a git username</string>
+    <string name="profile_pic">Profile Pic</string>
+    <string name="public_repos">Public Repos</string>
+    <string name="followers">Followers</string>
+    <string name="following">Followings</string>
+    <string name="action_search">Search</string>
 </resources>
