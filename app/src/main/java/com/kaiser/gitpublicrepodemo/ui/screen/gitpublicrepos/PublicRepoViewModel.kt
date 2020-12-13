@@ -1,9 +1,8 @@
-package com.kaiser.gitpublicrepodemo.ui.gitpublicrepos
+package com.kaiser.gitpublicrepodemo.ui.screen.gitpublicrepos
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.kaiser.gitpublicrepodemo.data.model.PublicRepoModel
-import com.kaiser.gitpublicrepodemo.data.model.UserDetailsModel
 import com.kaiser.gitpublicrepodemo.data.repository.IGithubRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

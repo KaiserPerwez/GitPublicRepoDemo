@@ -1,4 +1,4 @@
-package com.kaiser.gitpublicrepodemo.ui.gitsearch
+package com.kaiser.gitpublicrepodemo.ui.screen.gitsearch
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.kaiser.gitpublicrepodemo.R
 import com.kaiser.gitpublicrepodemo.databinding.ActivitySearchUserBinding
-import com.kaiser.gitpublicrepodemo.ui.gitpublicrepos.PublicRepoActivity
+import com.kaiser.gitpublicrepodemo.ui.screen.gitpublicrepos.PublicRepoActivity
+import com.kaiser.gitpublicrepodemo.ui.viewmodelfactory.SearchUserViewModelFactory
 import com.kaiser.gitpublicrepodemo.utils.ApiException
 import com.kaiser.gitpublicrepodemo.utils.NoInternetException
 import com.kaiser.gitpublicrepodemo.utils.dismissKeyboard
@@ -36,12 +37,14 @@ class SearchUserActivity : AppCompatActivity(), KodeinAware {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding?.viewmodel = this@SearchUserActivity.viewModel
-        resetSearchStatus()
-        initListeners()
+        initUiAndListeners()
     }
 
-    private fun initListeners() {
+
+
+    private fun initUiAndListeners() {
+        binding?.viewmodel = this@SearchUserActivity.viewModel
+        resetSearchStatus()
         binding?.searchBar?.apply {
             btnSearch.setOnClickListener {
                 val searchText = txtUsername.text?.toString()?.trim() ?: ""
@@ -50,7 +53,7 @@ class SearchUserActivity : AppCompatActivity(), KodeinAware {
                 searchForUser(searchText)
             }
         }
-        binding?.layoutContent?.btnRepository?.setOnClickListener {
+        binding?.layoutContentSearch?.btnRepository?.setOnClickListener {
             Intent(
                 this@SearchUserActivity,
                 PublicRepoActivity::class.java
@@ -64,7 +67,7 @@ class SearchUserActivity : AppCompatActivity(), KodeinAware {
         binding?.apply {
             progressBar?.visibility=View.GONE
             status?.visibility = View.VISIBLE
-            layoutContent?.root?.visibility = View.GONE
+            layoutContentSearch?.root?.visibility = View.GONE
             status?.text = getString(R.string.initial_search_status)
         }
     }
@@ -73,7 +76,6 @@ class SearchUserActivity : AppCompatActivity(), KodeinAware {
         lifecycleScope.launch {
             try {
                 viewModel?.fetchUserDetails(searchText)
-               // setSearchSuccess()
             } catch (e: ApiException) {
                 e.printStackTrace()
                 resetSearchStatus()

@@ -13,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GitPublicRepoDemo">
-        <activity android:name=".ui.gitpublicrepos.PublicRepoActivity"></activity>
-        <activity android:name=".ui.gitsearch.SearchUserActivity">
+        <activity android:name="com.kaiser.gitpublicrepodemo.ui.screen.gitpublicrepos.PublicRepoActivity"></activity>
+        <activity android:name="com.kaiser.gitpublicrepodemo.ui.screen.gitsearch.SearchUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

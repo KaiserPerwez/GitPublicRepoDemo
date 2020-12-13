@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+        <variable
+            name="viewmodel"
+            type="com.kaiser.gitpublicrepodemo.ui.screen.gitpublicrepos.PublicRepoViewModel" />
+
+    </data>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:public_repos="@{viewmodel.userRepos}"
+        tools:context=".ui.screen.gitpublicrepos.PublicRepoActivity"
+        tools:itemCount="10"
+        tools:listitem="@layout/inflater_public_repos"
+        tools:showIn="@layout/activity_public_repo" />
+
+</layout>

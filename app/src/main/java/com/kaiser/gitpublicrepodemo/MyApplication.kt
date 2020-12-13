@@ -4,8 +4,8 @@ import android.app.Application
 import com.kaiser.gitpublicrepodemo.data.remote.ApiInterceptor
 import com.kaiser.gitpublicrepodemo.data.remote.GitHubApi
 import com.kaiser.gitpublicrepodemo.data.repository.GithubRepository
-import com.kaiser.gitpublicrepodemo.ui.gitpublicrepos.PublicRepoViewModelFactory
-import com.kaiser.gitpublicrepodemo.ui.gitsearch.SearchUserViewModelFactory
+import com.kaiser.gitpublicrepodemo.ui.viewmodelfactory.PublicRepoViewModelFactory
+import com.kaiser.gitpublicrepodemo.ui.viewmodelfactory.SearchUserViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule

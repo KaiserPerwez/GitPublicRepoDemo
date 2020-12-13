@@ -1,4 +1,4 @@
-package com.kaiser.gitpublicrepodemo.ui.gitsearch
+package com.kaiser.gitpublicrepodemo.ui.screen.gitsearch
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel

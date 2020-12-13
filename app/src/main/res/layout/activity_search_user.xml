@@ -5,18 +5,19 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewmodel"
-            type="com.kaiser.gitpublicrepodemo.ui.gitsearch.SearchUserViewModel" />
+            type="com.kaiser.gitpublicrepodemo.ui.screen.gitsearch.SearchUserViewModel" />
 
-        <import type="android.view.View" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".ui.gitsearch.SearchUserActivity">
+        tools:context=".ui.screen.gitsearch.SearchUserActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -47,7 +48,7 @@
             tools:text="Search Status" />
 
         <include
-            android:id="@+id/layout_content"
+            android:id="@+id/layout_content_search"
             layout="@layout/content_search_user"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
