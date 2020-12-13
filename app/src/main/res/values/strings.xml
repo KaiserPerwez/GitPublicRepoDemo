@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">GitPublicRepoDemo</string>
-    <string name="search">Type a git username</string>
+    <string name="search">Search for a username</string>
     <string name="profile_pic">Profile Pic</string>
     <string name="public_repos">Public Repos</string>
+    <string name="view_repos">View Repos</string>
+    <string name="gists">Gists</string>
     <string name="followers">Followers</string>
     <string name="following">Followings</string>
     <string name="action_search">Search</string>
+    <string name="initial_search_status">Type a username and hit SEARCH to proceed</string>
 </resources>

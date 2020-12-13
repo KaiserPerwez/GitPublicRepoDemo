@@ -1,5 +1,6 @@
 package com.kaiser.gitpublicrepodemo.data.remote
 
+import com.kaiser.gitpublicrepodemo.data.model.UserDetails
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -7,19 +8,19 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface GitApi {
+interface GitHubApi {
 
-    @GET("{id}")
-    suspend fun getSample(
-        @Path("id") id: String
-    ): Response<String>
+    @GET("{user_name}")
+    suspend fun fetchUserDetails(
+        @Path("user_name") username: String
+    ): Response<UserDetails>
 
 
     companion object {
         operator fun invoke(
             apiInterceptor: ApiInterceptor
-        ): GitApi {
-            val baseUrl = "https://dummy_base_url"
+        ): GitHubApi {
+            val baseUrl = "https://api.github.com/users/"
             val okkHttpclient = OkHttpClient.Builder()
                 .addInterceptor(apiInterceptor)
                 .build()
@@ -29,7 +30,7 @@ interface GitApi {
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(GitApi::class.java)
+                .create(GitHubApi::class.java)
         }
     }
 }

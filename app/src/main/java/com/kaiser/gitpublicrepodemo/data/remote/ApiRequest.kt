@@ -7,22 +7,23 @@ import retrofit2.Response
 
 abstract class ApiRequest {
 
-    suspend fun<T: Any> apiRequest(request: suspend () -> Response<T>) : T{
+    suspend fun <T : Any> apiRequest(request: suspend () -> Response<T>): T {
         val response = request.invoke()
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             return response.body()!!
-        }else{
+        } else {
             val message = StringBuilder()
-            response.errorBody()?.let{
+            response.errorBody()?.string()?.also { // data.toString returns json-objects, data.string() returns json-data
                 try{
-                    message.append(JSONObject(it.toString()).getString("message"))
+                    val jsonObject=JSONObject(it)
+                    message.append(jsonObject.getString("message"))
                 }catch(e: JSONException){
-                    message.append(e.toString())
+                    message.append(e.message?:"")
                 }
             }
             message.append("\n Error Code: ${response.code()}")
             throw ApiException(message.toString())
         }
-    }
 
+    }
 }
