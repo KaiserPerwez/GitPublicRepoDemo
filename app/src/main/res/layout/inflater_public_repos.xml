@@ -49,12 +49,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@{model.description}"
+            android:text="@{(model.description==null) ? `Description not available` : model.description}"
             tools:text="Repo Description"
             android:ellipsize="end"
             android:singleLine="true"
             android:textSize="12sp"
-            android:visibility="@{model.description==null?View.GONE:View.VISIBLE}" />
+           />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text="@{model.size}"
+                android:text="@{model.size+``}"
                 android:textSize="24sp"
                 tools:text="20" />
 
@@ -92,7 +92,7 @@
                 android:layout_marginEnd="4dp"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="@{model.forks}"
+                android:text="@{model.forks+``}"
                 tools:text="10" />
 
 
@@ -114,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:text="@{model.watchers}"
+                android:text="@{model.watchers+``}"
                 android:textSize="24sp"
                 tools:text="20" />
 
