@@ -2,7 +2,7 @@ package com.kaiser.gitpublicrepodemo.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDetails (
+data class UserDetailsModel (
     @SerializedName("avatar_url")
     val avatarUrl: String?,
     val bio: String?,

@@ -1,5 +1,6 @@
 package com.kaiser.gitpublicrepodemo.ui.gitsearch
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.kaiser.gitpublicrepodemo.R
 import com.kaiser.gitpublicrepodemo.databinding.ActivitySearchUserBinding
+import com.kaiser.gitpublicrepodemo.ui.gitpublicrepos.PublicRepoActivity
 import com.kaiser.gitpublicrepodemo.utils.ApiException
 import com.kaiser.gitpublicrepodemo.utils.NoInternetException
 import com.kaiser.gitpublicrepodemo.utils.dismissKeyboard
@@ -48,8 +50,16 @@ class SearchUserActivity : AppCompatActivity(), KodeinAware {
                 searchForUser(searchText)
             }
         }
+        binding?.layoutContent?.btnRepository?.setOnClickListener {
+            Intent(
+                this@SearchUserActivity,
+                PublicRepoActivity::class.java
+            ).also { intent ->
+                intent.putExtra("user_name",viewModel.userDetails.get()!!.username)
+                startActivity(intent)
+            }
+        }
     }
-
     private fun resetSearchStatus() {
         binding?.apply {
             progressBar?.visibility=View.GONE

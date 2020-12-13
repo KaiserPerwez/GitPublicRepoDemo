@@ -4,6 +4,7 @@ import android.app.Application
 import com.kaiser.gitpublicrepodemo.data.remote.ApiInterceptor
 import com.kaiser.gitpublicrepodemo.data.remote.GitHubApi
 import com.kaiser.gitpublicrepodemo.data.repository.GithubRepository
+import com.kaiser.gitpublicrepodemo.ui.gitpublicrepos.PublicRepoViewModelFactory
 import com.kaiser.gitpublicrepodemo.ui.gitsearch.SearchUserViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -21,6 +22,7 @@ class MyApplication:Application(), KodeinAware {
         bind() from singleton { GitHubApi(instance()) }
         bind() from singleton { GithubRepository(instance()) }
         bind() from provider { SearchUserViewModelFactory(instance()) }
+        bind() from provider { PublicRepoViewModelFactory(instance()) }
     }
 
 }

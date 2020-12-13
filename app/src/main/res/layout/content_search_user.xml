@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewmodel"
             type="com.kaiser.gitpublicrepodemo.ui.gitsearch.SearchUserViewModel" />
@@ -13,22 +15,35 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="30dp"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <View
+                android:id="@+id/view_vertical"
+                android:layout_width="1dp"
+                android:layout_height="200dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintHorizontal_bias="0.55"
+                />
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_image_container"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
                 app:cardCornerRadius="75dp"
+                app:layout_constraintEnd_toStartOf="@+id/view_vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@+id/view_vertical">
 
                 <ImageView
                     android:id="@+id/profile_pic"
@@ -48,24 +63,23 @@
                 android:textSize="64sp"
                 app:layout_constraintBottom_toBottomOf="@+id/card_image_container"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.7"
-                app:layout_constraintStart_toEndOf="@+id/card_image_container"
-                app:layout_constraintTop_toTopOf="@+id/card_image_container"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/view_vertical"
+                app:layout_constraintTop_toTopOf="@+id/view_vertical"
                 tools:text="120" />
 
             <TextView
                 android:id="@+id/username"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:fontFamily="sans-serif-medium"
+                android:gravity="center"
                 android:text="@{`@`+viewmodel.userDetails.username}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/name"
-                app:layout_constraintEnd_toStartOf="@+id/btn_repository"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toEndOf="@+id/card_image_container"
                 app:layout_constraintStart_toStartOf="@+id/card_image_container"
                 app:layout_constraintTop_toBottomOf="@+id/card_image_container"
                 app:layout_constraintVertical_chainStyle="packed"
@@ -73,13 +87,13 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginEnd="16dp"
+                android:gravity="center"
                 android:text="@{viewmodel.userDetails.name}"
-                app:layout_constraintEnd_toStartOf="@+id/btn_repository"
-                app:layout_constraintStart_toStartOf="@+id/username"
+                app:layout_constraintEnd_toEndOf="@+id/card_image_container"
+                app:layout_constraintStart_toStartOf="@+id/card_image_container"
                 app:layout_constraintTop_toBottomOf="@+id/username"
                 tools:text="FName LName" />
 
@@ -87,16 +101,13 @@
                 android:id="@+id/btn_repository"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:paddingStart="24dp"
-                android:paddingEnd="24dp"
+                android:enabled="@{(viewmodel.userDetails.repos != 0)}"
                 android:text="@string/view_repos"
                 android:textAllCaps="false"
                 app:cornerRadius="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/name"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/count_repo"
                 app:layout_constraintStart_toStartOf="@+id/count_repo"
-                app:layout_constraintTop_toTopOf="@+id/username" />
+                app:layout_constraintTop_toBottomOf="@+id/count_repo" />
 
 
             <TextView
@@ -125,7 +136,7 @@
                 android:layout_width="1dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="24dp"
-                android:background="@android:color/darker_gray"
+                android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toStartOf="@+id/view2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +168,7 @@
                 android:id="@+id/view2"
                 android:layout_width="1dp"
                 android:layout_height="48dp"
-                android:background="@android:color/darker_gray"
+                android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/view"
@@ -188,7 +199,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="24dp"
-                android:background="@android:color/darker_gray"
+                android:background="?android:attr/listDivider"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_followers" />
